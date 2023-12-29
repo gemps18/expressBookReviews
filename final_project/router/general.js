@@ -2,18 +2,22 @@ const express = require('express');
 let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
+const axios = require("axios");
 const public_users = express.Router();
 
+public_users.use(express.json());
 
 public_users.post("/register", (req,res) => {
   //Write your code here
-  const username = req.body.username;
-  const password = req.body.password;
+  let username = req.body.username;
+  let password = req.body.password;
+  console.log(req.body)
   if(username && password){
     if(!isValid(username)){
       users.push({"username": username, "password": password});
       return res.status(200).json({message: "User Successfully registred. You can now login."})
-    }else{
+    }
+    else{
       return res.status(404).json({message: "User already exist!"})
     }
   }else{
