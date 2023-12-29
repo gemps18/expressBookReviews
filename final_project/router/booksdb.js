@@ -15,7 +15,7 @@ let books = {
 }
 
 regd_books.get('/',(req,res)=>{
-      re.json(books);
+      res.json(books);
 })
 
 module.exports = books;
