@@ -3,7 +3,7 @@ let books = {
       2: {"isbn": "978-1-84749-719-5","author": "Hans Christian Andersen","title": "Fairy tales", "review": {} },
       3: {"isbn": "978-0-140-43687-3","author": "Dante Alighieri","title": "The Divine Comedy", "review": {} },
       4: {"isbn": "978-0-14-044100-0","author": "Unknown","title": "The Epic Of Gilgamesh", "review": {} },
-      5: {"isbn": "978-0-19-953587-3","author": "Unknown","title": "The Book Of Job", "reviews": {} },
+      5: {"isbn": "978-0-19-953587-3","author": "Unknown","title": "The Book Of Job", "review": {} },
       6: {"isbn": "978-1-59308-266-8","author": "Unknown","title": "One Thousand and One Nights", "review": {} },
       7: {"isbn": "978-0-14-044769-9","author": "Unknown","title": "Nj\u00e1l's Saga", "review": {} },
       8: {"isbn": "978-1-59308-324-5","author": "Jane Austen","title": "Pride and Prejudice", "review": {} },
