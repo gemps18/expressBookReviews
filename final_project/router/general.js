@@ -37,22 +37,23 @@ public_users.get('/',function (req, res) {
 });
 
 // Get book details based on ISBN
-public_users.get('/isbn/:isbn',function (req, res) {
-  //Write your code here
-  //TASK 11 WITH PROMISES and CALLBACKS
-  let isbn = req.params.isbn
+public_users.get('/isbn/:isbn', function (req, res) {
+    // Write your code here
+    // TASK 11 WITH PROMISES and CALLBACKS
+    let isbn = req.params.isbn;
+    let singleBook = new Promise((resolve, reject)=>{
+        const isbnBook = Object.values(books).filter(el => { return el.isbn === isbn; });
+        resolve(isbnBook)
+    })
 
-  let singleBook = new Promise((resolve, reject)=>{
-    resolve(Object.values(books[isbn]))
-  })
-  singleBook.then((data)=>{
-    return res.send(JSON.stringify(data, null, 4));
-  })
-  singleBook.catch(() =>{
-    return res.status(404).json({message: "Not Found, "})
-  })
-
- });
+    singleBook.then((data) => {
+       return res.send(JSON.stringify(data, null, 4));
+    });
+   
+    singleBook.catch(() => {
+       return res.status(404).json({ message: "No Book Found With The Specified ISBN" });
+    });
+});
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
@@ -69,7 +70,7 @@ public_users.get('/author/:author',function (req, res) {
   })
 
   singleBook.catch(() =>{
-    return res.status(404).json({message: "Not Found, "})
+    return res.status(404).json({message: "No Books Found With The Specified Author, "})
   })
 
 });
@@ -88,20 +89,25 @@ public_users.get('/title/:title',function (req, res) {
   })
 
   singleBook.catch((e) =>{
-    return res.status(404).json({message: "Not Found, "})
+    return res.status(404).json({message: "No Books Found With The Specified Title, "})
   })
   });
 
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
     //Write your code here
-    let isbn = req.params.isbn
-    let review = Object.values(books)[isbn]
-    if(review){
-      return res.status(200).send(JSON.stringify(review, null, 4))
-    }else{
-      return res.status(400).json({message: "ISBN not found"});
-    }
+    let review = req.params.review;
+    let singleBook = new Promise((resolve, reject)=>{
+        const reviewBook = Object.values(books).filter(el =>{return el.review === review})
+        resolve(reviewBook)
+    })
+    singleBook.then(data =>{
+        return res.send(JSON.stringify(data, null, 4));
+    })
+
+    singleBook.catch(() =>{
+        return res.status(404).json({message: "No Reviews Found With The Specified ISBN, "})
+    })
   });
 
 module.exports.general = public_users;
