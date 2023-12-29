@@ -1,3 +1,6 @@
+const express = require("express")
+const regd_books = express.Router();
+
 let books = {
       1: {"isbn": "978-0-385-47454-9","author": "Chinua Achebe","title": "Things Fall Apart", "review": {} },
       2: {"isbn": "978-1-84749-719-5","author": "Hans Christian Andersen","title": "Fairy tales", "review": {} },
@@ -11,4 +14,9 @@ let books = {
       10: {"isbn": "978-0-394-75269-1","author": "Samuel Beckett","title": "Molloy, Malone Dies, The Unnamable, the trilogy", "review": {} }
 }
 
-module.exports=books;
+regd_books.get('/',(req,res)=>{
+      re.json(books);
+})
+
+module.exports = books;
+module.exports = regd_books;
