@@ -22,16 +22,19 @@ if(req.session){
         let token = req.session.authorization.token;
         jwt.verify(token, "my-secret-key",(err, user) =>{
             if(!err){
-                // Token verification failed
-                req.status(401).json({ error: "User not authenticated" });
-            }else{
+                // Token verification passed
                 req.session.user = user;
-                return res.status(403).json({message: "User not authenticated!"})
+                next();
+            }else{
+                req.status(401).json({ error: "User not authenticated" });
             }
         });
     }else{
         return res.status(403).json({message: "User not Logged in."})
     }
+}else{
+    return res.status(403).json({message: "User session not found."})
+}
 });
  
 const PORT =5000;
