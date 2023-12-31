@@ -55,7 +55,7 @@ public_users.get('/isbn/:isbn', function (req, res) {
     });
    
     singleBook.catch(() => {
-       return res.status(404).json({ message: "No Book Found With The Specified ISBN" });
+       return res.status(404).json({ message: "No Book Found With The Specified ISBN." });
     });
 });
   
@@ -74,7 +74,7 @@ public_users.get('/author/:author',function (req, res) {
   })
 
   singleBook.catch(() =>{
-    return res.status(404).json({message: "No Books Found With The Specified Author, "})
+    return res.status(404).json({message: "No Books Found With The Specified Author."})
   })
 
 });
@@ -93,7 +93,7 @@ public_users.get('/title/:title',function (req, res) {
   })
 
   singleBook.catch((e) =>{
-    return res.status(404).json({message: "No Books Found With The Specified Title, "})
+    return res.status(404).json({message: "No Books Found With The Specified Title."})
   })
   });
 
@@ -110,7 +110,7 @@ public_users.get('/review/:isbn',function (req, res) {
     })
 
     singleBook.catch(() =>{
-        return res.status(404).json({message: "No Reviews Found With The Specified ISBN, "})
+        return res.status(404).json({message: "No Reviews Found With The Specified ISBN."})
     })
   });
 
