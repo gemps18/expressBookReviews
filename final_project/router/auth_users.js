@@ -12,14 +12,26 @@ let users = [{"username": "bigboi123", "password": "bigheart789"}];
 
 const isValid = (username)=>{ //returns boolean
 //write code to check is the username is valid
-//username should be unique
-  return !users.some(user => user.username === username);
-
+let userswithsamename = users.filter((user)=>{
+    return user.username === username
+  });
+  if(userswithsamename.length > 0){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 const authenticatedUser = (username,password)=>{ //returns boolean
 //write code to check if username and password match the one we have in records.
-  return users.some(user => user.username === username && user.password === password);
+let validusers = users.filter((user)=>{
+    return (user.username === username && user.password === password)
+  });
+  if(validusers.length > 0){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 //only registered users can login
